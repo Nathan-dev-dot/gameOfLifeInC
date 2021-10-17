@@ -5,10 +5,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "cells.h"
 #include <time.h>
 #include <math.h>
 #include <string.h>
+#include "cells.h"
+#include "io.h"
 
 #define MAP_SIZE 15
 
@@ -19,7 +20,7 @@ void freeMap (Cell** map) ;
 void printMap (Cell** map);
 Cell** nextRound(Cell** map);
 Cell** allocMap () ;
-
+void saveCurrentMap (Cell** map) ;
 size_t countNeighboursAlive (Cell** map, size_t i, size_t j);
 
 int main (void) {
@@ -27,14 +28,13 @@ int main (void) {
     return 0;
 }
 
-
 void initProg (void) {
     Cell** map = initMap();
     int choice = 1;
     if (map == NULL) return ;
     printMap(map);
     while (choice) {
-
+        printMenu() ;
         fflush(stdin) ;
         scanf("%d", &choice);
         switch (choice) {
@@ -46,6 +46,9 @@ void initProg (void) {
                 printf("\n\n") ;
                 printMap(map) ;
                 break;
+            case 2:
+                //saveToFile
+                break ;
         }
     }
 }
