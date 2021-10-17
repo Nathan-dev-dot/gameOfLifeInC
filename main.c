@@ -14,14 +14,6 @@
 #define MAP_SIZE 15
 
 void initProg(void);
-Cell** initMap();
-void setAliveOrDead(int status, char *display);
-void freeMap (Cell** map) ;
-void printMap (Cell** map);
-Cell** nextRound(Cell** map);
-Cell** allocMap () ;
-void saveCurrentMap (Cell** map) ;
-size_t countNeighboursAlive (Cell** map, size_t i, size_t j);
 
 int main (void) {
     initProg();
@@ -32,7 +24,7 @@ void initProg (void) {
     Cell** map = initMap();
     int choice = 1;
     if (map == NULL) return ;
-    printMap(map);
+    printMap(map, stdout);
     while (choice) {
         printMenu() ;
         fflush(stdin) ;
@@ -44,10 +36,10 @@ void initProg (void) {
             case 1:
                 map = nextRound(map);
                 printf("\n\n") ;
-                printMap(map) ;
+                printMap(map, stdout) ;
                 break;
             case 2:
-                //saveToFile
+                saveToFile(map) ;
                 break ;
         }
     }
@@ -95,12 +87,12 @@ void setAliveOrDead (int status, char *display) {
     strcpy(display, "Dead") ;
 }
 
-void printMap (Cell** map) {
+void printMap (Cell** map, FILE* stream) {
     for (size_t i = 0 ; i < MAP_SIZE ; ++i) {
         for (size_t j = 0 ; j < MAP_SIZE ; ++j) {
-            printf(" %d ", map[i][j].status);
+            fprintf(stream, " %d ", map[i][j].status);
         }
-        printf("\n") ;
+        fprintf(stream, "\n") ;
     }
 }
 
