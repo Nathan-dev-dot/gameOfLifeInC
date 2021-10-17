@@ -1,2 +1,3 @@
 void printMenu () ;
-size_t saveToFile (Cell** map) ;
+void printMap (Cell** map, FILE* stream);
+void saveToFile (Cell** map) ;

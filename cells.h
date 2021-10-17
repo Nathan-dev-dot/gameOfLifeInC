@@ -7,7 +7,6 @@ typedef struct Cell {
 Cell** initMap();
 void setAliveOrDead(int status, char *display);
 void freeMap (Cell** map) ;
-void printMap (Cell** map, FILE* stream);
 Cell** nextRound(Cell** map);
 Cell** allocMap () ;
 void saveCurrentMap (Cell** map) ;

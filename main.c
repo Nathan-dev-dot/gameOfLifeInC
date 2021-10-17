@@ -87,14 +87,6 @@ void setAliveOrDead (int status, char *display) {
     strcpy(display, "Dead") ;
 }
 
-void printMap (Cell** map, FILE* stream) {
-    for (size_t i = 0 ; i < MAP_SIZE ; ++i) {
-        for (size_t j = 0 ; j < MAP_SIZE ; ++j) {
-            fprintf(stream, " %d ", map[i][j].status);
-        }
-        fprintf(stream, "\n") ;
-    }
-}
 
 Cell** nextRound (Cell** map) {
     size_t neighboursAlive = 0 ;
