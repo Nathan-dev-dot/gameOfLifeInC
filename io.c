@@ -7,7 +7,7 @@
 
 void printMenu () {
     printf("Select option:\n") ;
-    printf("0 - Next round\n") ;
+    printf("0 - Quit\n") ;
     printf("1 - Next round\n") ;
     printf("2 - Save most recent to file.\n") ;
     printf("Enter : ") ;
@@ -15,9 +15,11 @@ void printMenu () {
 
 
 void printMap (Cell** map, FILE* stream) {
+    char outputChar[2] = {'O', 'X'} ;
+
     for (size_t i = 0 ; i < MAP_SIZE ; ++i) {
         for (size_t j = 0 ; j < MAP_SIZE ; ++j) {
-            fprintf(stream, " %d ", map[i][j].status);
+            fprintf(stream, " %c ", outputChar[map[i][j].status]);
         }
         fprintf(stream, "\n") ;
     }
